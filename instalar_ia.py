@@ -19,7 +19,7 @@ def achar_ollama() -> str | None:
 
 def servidor_no_ar() -> bool:
     try:
-        urllib.request.urlopen("http://localhost:11434", timeout=2).read()
+        urllib.request.urlopen("http://127.0.0.1:11434", timeout=2).read()
         return True
     except OSError:
         return False

@@ -37,7 +37,7 @@ PASTA_VOZES = RAIZ / "vozes"
 #  groq:   nuvem com plano gratuito, bem mais rápida e esperta; exige GROQ_API_KEY
 #  nenhum: só comandos locais
 PROVEDORES = {
-    "ollama": {"url": "http://localhost:11434/v1", "modelo": "qwen2.5:3b", "chave": ""},
+    "ollama": {"url": "http://127.0.0.1:11434/v1", "modelo": "qwen2.5:3b", "chave": ""},
     "groq": {"url": "https://api.groq.com/openai/v1", "modelo": "llama-3.3-70b-versatile", "chave": os.getenv("GROQ_API_KEY", "")},
 }
 IA_PROVEDOR = os.getenv("IA_PROVEDOR", "auto").strip().lower()

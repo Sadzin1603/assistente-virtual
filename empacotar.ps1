@@ -59,8 +59,9 @@ foreach ($f in 'main.py', 'config.py', 'autoteste.py', 'lancador.py', 'atualizar
 robocopy (Join-Path $raiz 'assistente') (Join-Path $dist 'assistente') *.py /NFL /NDL /NJH /NJS /NP | Out-Null
 robocopy (Join-Path $raiz 'empacote') $dist /E /NFL /NDL /NJH /NJS /NP | Out-Null
 # Versao instalada = commit atual, para o atualizador saber de onde partir.
-$sha = (git -C $raiz rev-parse HEAD 2>$null)
-if ($sha) { Set-Content -Encoding ascii -NoNewline (Join-Path $dist 'versao.txt') $sha.Trim() }
+$sha = (cmd /c "git -C `"$raiz`" rev-parse HEAD 2>nul") -join ''
+if ($sha -match '^[0-9a-f]{40}$') { Set-Content -Encoding ascii -NoNewline (Join-Path $dist 'versao.txt') $sha }
+else { Write-Host '    aviso: sem commit git; o pacote vai se atualizar na primeira abertura' }
 
 # Lista dos arquivos pesados, para o lancador detectar extracao incompleta (caminho longo, antivirus).
 $todos = Get-ChildItem (Join-Path $dist 'runtime'), (Join-Path $dist 'modelos'), (Join-Path $dist 'vozes') -Recurse -File |
