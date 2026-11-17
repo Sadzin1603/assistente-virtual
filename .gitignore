@@ -1,0 +1,6 @@
+.venv/
+.env
+vozes/
+lembretes.json
+__pycache__/
+dist/

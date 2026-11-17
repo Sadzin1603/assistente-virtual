@@ -1,0 +1,50 @@
+JARVIS - ASSISTENTE VIRTUAL
+===========================
+
+Nao precisa instalar nada para a voz: o Python, as bibliotecas e os modelos ja estao nesta pasta.
+
+1. Extraia o zip inteiro para uma pasta de caminho curto, por exemplo C:\Jarvis.
+   (Nao rode de dentro do zip.)
+2. Abra "Diagnostico.bat". Ele confere microfone, voz e modelos.
+3. Abra "Iniciar.bat". Diga "Jarvis", espere o bipe e fale.
+   Tambem funciona tudo de uma vez: "Jarvis, que horas sao?"
+
+Se o Windows mostrar um aviso de seguranca ao abrir o .bat, escolha "Mais informacoes" > "Executar assim mesmo".
+
+ARQUIVOS
+  Iniciar.bat             modo voz, com o indicador na tela
+  Modo texto.bat          digitar em vez de falar
+  Diagnostico.bat         testa cada peca
+  Instalar IA local.bat   instala a IA gratuita que roda no proprio PC (Ollama)
+  Configuracoes.bat       abre o arquivo .env no Bloco de Notas
+
+ATUALIZACAO AUTOMATICA
+  Toda vez que abre, o assistente confere no GitHub se ha versao nova e se atualiza sozinho.
+  Sem internet ele simplesmente abre a versao instalada.
+  Para desligar: no .env, coloque AUTO_ATUALIZAR=0
+
+INTELIGENCIA ARTIFICIAL (opcional, de graca)
+  Sem IA, funcionam os comandos: abrir programas e sites, volume, musica, timers,
+  lembretes, hora, bloquear, desligar.
+  Para perguntas abertas ha duas opcoes gratuitas:
+   - Local: abra "Instalar IA local.bat" uma vez. Funciona offline; respostas em alguns segundos.
+   - Nuvem (Groq): crie uma chave gratis em console.groq.com e coloque no .env em GROQ_API_KEY=
+     Mais rapida e mais esperta, mas precisa de internet.
+
+PROBLEMAS COMUNS
+  Microfone falha no diagnostico (MME error 11 ou parecido):
+    - Configuracoes > Privacidade e seguranca > Microfone: ligue
+      "Permitir que aplicativos da area de trabalho acessem o microfone".
+    - Antivirus (Kaspersky, por exemplo) pode bloquear o microfone para programas
+      desconhecidos. Libere runtime\python.exe como aplicativo confiavel.
+  Demora para reagir ao "Jarvis": diga o nome a inglesa ("djarvis") para o bipe sair na hora,
+    ou fale o pedido junto: "Jarvis, abre o Chrome".
+  Dispara sozinho: no .env, use WAKE_LIMIAR=0.7
+  Nao quer o indicador na tela: no .env, use HUD=0
+
+EXEMPLOS
+  "Jarvis, que horas sao"      "Jarvis, abre o Chrome"     "Jarvis, pesquisa por receita de pao"
+  "toca Legiao Urbana no YouTube"     "pausa"              "proxima musica"
+  "aumenta o volume"           "volume em 30"              "timer de 10 minutos"
+  "me lembra de tirar o lixo em 20 minutos"                "bloqueia a tela"
+  "encerrar assistente"
